@@ -184,6 +184,6 @@ if __name__ == '__main__':
     torch.random.manual_seed(100)
     net = DANN_Resnet(n_class=31).to(DEVICE)
     # net = DANN_Resnet_attention(n_class=31).to(DEVICE)
-    optimizer = optim.SGD(net.parameters(), lr=LEARNING_RATE)
+    optimizer = optim.SGD(net.parameters(), lr=LEARNING_RATE, momentum=0.9, weight_decay=1e-3, nesterov=True)
     print('DEVICE:', DEVICE)
     train(net, optimizer)
